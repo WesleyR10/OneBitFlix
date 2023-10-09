@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 node_modules/
 uploads/
+=======
+node_modules
+uploads/*
+>>>>>>> 365371a3a8d8f8be57d597a4065f35afe3f4590c
