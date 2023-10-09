@@ -1,7 +1,6 @@
-// src/models/User.ts
-
 import { sequelize } from '../database'
 import { DataTypes, Model, Optional } from 'sequelize'
+import bcrypt from 'bcrypt'
 
 export interface User {
   id: number
@@ -60,6 +59,16 @@ export const User = sequelize.define<UserInstance, User>('users', {
     type: DataTypes.STRING,
     validate: { // Garantir que o texto é admin ou user
       isIn: [['admin', 'user']]  
+    }
+  }
+}, {
+  hooks: {
+    // Antes de registro ser salvo ou atualizado
+    beforeSave: async (user) => {
+      // isNewRecord(propriedade do sequelize) retorna verdadeiro se propriedade ainda nao existir no banco de dados ou a senha do user foi atualizada (changed)
+      if (user.isNewRecord || user.changed('password')) { 
+        user.password = await bcrypt.hash(user.password.toString(), 10); // hash cria a senha criptografada
+      }
     }
   }
 })
