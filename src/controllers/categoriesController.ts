@@ -1,5 +1,4 @@
 import { Request, Response } from 'express'
-import { Category } from '../models'
 import { categoryService } from '../services/categoryService'
 import { getPaginationParams } from '../helpers/getPaginationParams'
 
@@ -23,12 +22,9 @@ export const categoriesController = {
     const { id } = req.params // Requisição passada no caso o id
 
     try {
-        const categorie = await Category.findByPk(id,{
-          attributes: ['id', 'name', 'position'], // Reflete no que vai ser retornado
-        })
-        
-        return res.json(categorie)
-    } catch (err) {
+      const category = await categoryService.findByIdWithCourses(id)
+      return res.json(category)
+      } catch (err) {
       if (err instanceof Error) {
         return res.status(400).json({ message: err.message })
       }

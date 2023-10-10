@@ -18,5 +18,18 @@ export const categoryService = {
       perPage, // Quantidade por pagina
       total: count // Quantidade maxima de registro
     }
+  },
+
+  findByIdWithCourses: async (id: string) => {
+    const categoryWithCourses = await Category.findByPk(id, {
+      attributes: ['id', 'name'],
+      include: { // Include é uma assosiação
+        association: 'courses', // Assosiação definida no index do models
+        attributes: ['id', 'name', 'synopsis', // Atributos que quero da assosiação 
+        ['thumbnail_url', 'thumbnailUrl']],  // Aqui foi renomeado
+      }
+    })
+    
+    return categoryWithCourses
   }
 }
