@@ -27,6 +27,8 @@ export const categoryService = {
         association: 'courses', // Assosiação definida no index do models
         attributes: ['id', 'name', 'synopsis', // Atributos que quero da assosiação 
         ['thumbnail_url', 'thumbnailUrl']],  // Aqui foi renomeado
+        order: [['id', 'ASC']],
+        separate: true // Rodar o include em uma query separada para utilizar o order
       }
     })
     
