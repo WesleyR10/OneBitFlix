@@ -1,6 +1,7 @@
 import express from 'express'
 import { categoriesController } from './controllers/categoriesController'
 import { coursesController } from './controllers/courseController'
+import { episodesController } from './controllers/episodesController'
 
 const router = express.Router()
 
@@ -13,5 +14,8 @@ router.get('/courses/featured', coursesController.featured) //Rota que retorna 3
 router.get('/courses/newest', coursesController.newest) //Rota que retorna 10 cursos em lançamentos
 router.get('/courses/search', coursesController.search) //Rota que busca um curso
 router.get('/courses/:id', coursesController.show) //Rota que retorna curso especifico
+
+// Straming
+router.get('/episodes/stream', episodesController.stream) // Retorna o video
 
 export { router }
