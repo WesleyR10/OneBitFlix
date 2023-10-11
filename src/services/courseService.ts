@@ -2,6 +2,27 @@ import { Course } from '../models'
 
 export const courseService = {
 
+  getRandomFeaturedCourses: async () => {
+    const featuredCourses  = await Course.findAll({
+      attributes: ['id', 'name', 'synopsis', ['thumbnail_url', 'thumbnailUrl']],
+      where:{ // Pegar todos os cursos aonde
+        featured: true // Featured for verdadeiro
+      }
+    })
+
+    const randomFeaturedCourses = featuredCourses.sort(() => 0.5 - Math.random()) // Ordenando de forma aleatoria
+    return randomFeaturedCourses.slice(0,3) // Retorna a ordenação aleatoria cortando os elementos pegando a partir da posição zero ate a 3
+  },
+
+  getTopTenNewest: async () => {
+    const courses  = await Course.findAll({
+      order: [['updated_at', 'DESC']], // Ordenando pela data de atualização os cursos de forma descendente do maior para o menor
+      limit: 10
+    })
+    return courses
+  },
+
+
   findByIdWithEpisodes: async (id: string) => {
     const courseWithEpisodes  = await Course.findByPk(id, {
       attributes: ['id', 'name', 'synopsis', ['thumbnail_url', 'thumbnailUrl']],
@@ -18,15 +39,4 @@ export const courseService = {
     
     return courseWithEpisodes 
   }, 
-
-  getRandomFeaturedCourses: async () => {
-    const featuredCourses  = await Course.findAll({
-      attributes: ['id', 'name', 'synopsis', ['thumbnail_url', 'thumbnailUrl']],
-      where:{ // Pegar todos os cursos aonde
-        featured: true // Featured for verdadeiro
-      }
-    })
-
-    const randomFeaturedCourses = featuredCourses.sort(() => 0.5 - Math.random()) // Ordenando de forma aleatoria
-    return randomFeaturedCourses.slice(0,3) // Retorna a ordenação aleatoria cortando os elementos pegando a partir da posição zero ate a 3
-  },}
+}
