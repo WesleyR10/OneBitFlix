@@ -11,6 +11,7 @@ router.get('/categories/:id', categoriesController.show) //Rota que retorna cate
 // Todas as rotas de cursos
 router.get('/courses/featured', coursesController.featured) //Rota que retorna 3 cursos em destaque
 router.get('/courses/newest', coursesController.newest) //Rota que retorna 10 cursos em lançamentos
+router.get('/courses/search', coursesController.search) //Rota que busca um curso
 router.get('/courses/:id', coursesController.show) //Rota que retorna curso especifico
 
 export { router }

@@ -1,3 +1,4 @@
+import { Op } from 'sequelize'
 import { Course } from '../models'
 
 export const courseService = {
@@ -22,6 +23,25 @@ export const courseService = {
     return courses
   },
 
+  findByName: async (name: string, page: number, perPage: number) =>{
+    const offset = ( page - 1) * perPage
+    const { count, rows } = await Course.findAndCountAll({
+      attributes: ['id', 'name', 'synopsis', ['thumbnail_url', 'thumbnailUrl']],
+      where:{ // Pegar todos os cursos aonde
+        name: {
+          [Op.iLike]: `%${name}%` // Pesquisa por resultados de buscar semelhante - case insensitive - %% (Significa que quero procurar em qualquer posição)
+        }
+      },
+      limit: perPage,
+      offset
+    })
+  return {
+    courses: rows,
+    page,
+    perPage,
+    total: count
+  }
+  },
 
   findByIdWithEpisodes: async (id: string) => {
     const courseWithEpisodes  = await Course.findByPk(id, {
