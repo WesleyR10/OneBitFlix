@@ -9,6 +9,8 @@ app.use(adminJs.options.rootPath, adminJsRouter) // app.use(caminho, rotas)
 
 app.use(express.static('public')) // Servido como arquivo static
 
+app.use(express.json()) // Serve para ler as requisições do corpo -- req.body
+
 app.use(router) // Utilizar as rotas criadas no file routes.ts
 
 const PORT = process.env.PORT || 3000

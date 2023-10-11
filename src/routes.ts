@@ -2,8 +2,12 @@ import express from 'express'
 import { categoriesController } from './controllers/categoriesController'
 import { coursesController } from './controllers/courseController'
 import { episodesController } from './controllers/episodesController'
+import { authController } from './controllers/authController'
 
 const router = express.Router()
+
+// Todas as rotas de User
+router.post('/auth/register', authController.register) // Autenticação do usuario
 
 // Todas as rotas de categorias
 router.get('/categories', categoriesController.index) //Rota que retorna todas as categorias
