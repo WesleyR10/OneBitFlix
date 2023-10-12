@@ -7,7 +7,8 @@ import { authController } from './controllers/authController'
 const router = express.Router()
 
 // Todas as rotas de User
-router.post('/auth/register', authController.register) // Autenticação do usuario
+router.post('/auth/register', authController.register) // Criação e autenticação do usuario
+router.post('/auth/login', authController.login) // login do usuario
 
 // Todas as rotas de categorias
 router.get('/categories', categoriesController.index) //Rota que retorna todas as categorias
