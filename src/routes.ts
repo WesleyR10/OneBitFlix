@@ -3,7 +3,7 @@ import { categoriesController } from './controllers/categoriesController'
 import { coursesController } from './controllers/courseController'
 import { episodesController } from './controllers/episodesController'
 import { authController } from './controllers/authController'
-import { ensureAuth } from './middlewares/auth'
+import { ensureAuth, ensureAuthViaQuery } from './middlewares/auth'
 
 const router = express.Router()
 
@@ -22,6 +22,6 @@ router.get('/courses/search', ensureAuth, coursesController.search) //Rota que b
 router.get('/courses/:id', ensureAuth, coursesController.show) //Rota que retorna curso especifico
 
 // Straming
-router.get('/episodes/stream', episodesController.stream) // Retorna o video
+router.get('/episodes/stream', ensureAuthViaQuery, episodesController.stream) // Retorna o video
 
 export { router }
