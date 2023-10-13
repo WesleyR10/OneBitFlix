@@ -16,5 +16,18 @@ export const favoritesController = {
         return res.status(400).json({ message: err.message })
       }
     }
+  },
+
+  // GET /favorites
+  index: async (req: AuthenticatedRequest, res: Response) => { // AuthenticatedRequest é o Request do express so que ele extende a instancia de user
+    const userId = req.user!.id // Sendo possivel pegar o user dessa forma, do token decodificado
+    
+    try {
+      const favorites = await favoriteService.findByUserId(userId)
+      return res.status(201).json(favorites)
+    } catch (err) {
+      if (err instanceof Error) {
+        return res.status(400).json({ message: err.message })
+      }}
+    }
   }
-}
