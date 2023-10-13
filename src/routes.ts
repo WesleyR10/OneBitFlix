@@ -2,6 +2,7 @@ import express from 'express'
 import { categoriesController } from './controllers/categoriesController'
 import { coursesController } from './controllers/courseController'
 import { episodesController } from './controllers/episodesController'
+import { favoritesController } from './controllers/favoritesController'
 import { authController } from './controllers/authController'
 import { ensureAuth, ensureAuthViaQuery } from './middlewares/auth'
 
@@ -23,5 +24,8 @@ router.get('/courses/:id', ensureAuth, coursesController.show) //Rota que retorn
 
 // Straming
 router.get('/episodes/stream', ensureAuthViaQuery, episodesController.stream) // Retorna o video
+
+//Favorites
+router.post('/favorites', ensureAuth, favoritesController.save)
 
 export { router }
