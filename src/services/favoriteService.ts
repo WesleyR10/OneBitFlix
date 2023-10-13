@@ -28,5 +28,16 @@ export const favoriteService = {
     userId, // Dessa forma retorna apenas um unico userId
     courses: favorites.map(favorite => favorite.Course) // Um unico array com todos os cursos
   }
-}
+}, 
+
+  delete: async (userId: number, courseId: number) => {
+  await Favorite.destroy({
+    where: {  // Excluir aonde o user id e o courseId for igual o passado na requisição
+      userId,
+      courseId
+    }
+  })
+
+  return 
+},
 }
