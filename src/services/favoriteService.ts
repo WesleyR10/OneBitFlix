@@ -1,8 +1,8 @@
-import { Favorite } from "../models/Favorite"
+import { Favorite } from "../models"
 
 export const favoriteService = {
   create: async (userId: number, courseId: number) => {
-    const favorite = Favorite.create({
+    const favorite = await Favorite.create({
       courseId,
       userId
     })
