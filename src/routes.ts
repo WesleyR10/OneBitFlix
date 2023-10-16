@@ -20,6 +20,7 @@ router.get('/categories/:id', ensureAuth, categoriesController.show) //Rota que 
 // Todas as rotas de cursos
 router.get('/courses/featured', ensureAuth, coursesController.featured) //Rota que retorna 3 cursos em destaque
 router.get('/courses/newest', coursesController.newest) //Rota que retorna 10 cursos em lançamentos
+router.get('/courses/popular', ensureAuth, coursesController.popular) //Rota que retorna 10 cursos mais populares
 router.get('/courses/search', ensureAuth, coursesController.search) //Rota que busca um curso
 router.get('/courses/:id', ensureAuth, coursesController.show) //Rota que retorna curso especifico
 

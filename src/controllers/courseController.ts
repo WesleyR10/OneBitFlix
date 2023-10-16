@@ -28,6 +28,17 @@ newest: async (req: Request, res: Response) => {
     }
 }},
 
+//Metodo que retorna cursos populares - GET - /courses/popular
+popular: async (req: Request, res: Response) => {
+  try {
+    const topTenCourses = await courseService.getTopTenByLikes()
+    return res.json(topTenCourses)
+    } catch (err) {
+    if (err instanceof Error) {
+      return res.status(400).json({ message: err.message })
+    }
+}},
+
 //Metodo que busca cursos- GET - /courses/search?name
 search: async (req: Request, res: Response) => {
   const {name} = req.query // Feito para pegar o nome passado no corpo da requisição
