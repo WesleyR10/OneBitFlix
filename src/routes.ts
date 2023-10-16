@@ -26,6 +26,8 @@ router.get('/courses/:id', ensureAuth, coursesController.show) //Rota que retorn
 
 // Straming
 router.get('/episodes/stream', ensureAuthViaQuery, episodesController.stream) // Retorna o video
+router.get('/episodes/:id/watchTime', ensureAuth, episodesController.getWatchTime)
+router.post('/episodes/:id/watchTime', ensureAuth, episodesController.setWatchTime)
 
 //Favorites
 router.post('/favorites', ensureAuth, favoritesController.save)
