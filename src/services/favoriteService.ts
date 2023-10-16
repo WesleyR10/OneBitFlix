@@ -40,4 +40,14 @@ export const favoriteService = {
 
   return 
 },
-}
+
+isFavorited: async (userId: number, courseId: number) => {
+  const favorite = await Favorite.findOne({ // E um metodo de busca que verifica se esta favoritado passando os mesmo parametros que foi utilizado para criar
+    where: {
+      userId,
+      courseId
+    }
+  })
+
+  return favorite !== null ? true : false
+}}

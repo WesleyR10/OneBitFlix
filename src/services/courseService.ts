@@ -17,7 +17,7 @@ export const courseService = {
 
   getTopTenNewest: async () => {
     const courses  = await Course.findAll({
-      order: [['updated_at', 'DESC']], // Ordenando pela data de atualização os cursos de forma descendente do maior para o menor
+      order: [['created_at', 'DESC']], // Ordenando pela data de atualização os cursos de forma descendente do maior para o menor
       limit: 10
     })
     return courses

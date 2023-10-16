@@ -21,4 +21,14 @@ export const likeService = {
 
   return 
 },
-}
+
+isLiked: async (userId: number, courseId: number) => {
+  const like = await Like.findOne({ // E um metodo de busca que verifica se tem like passando os mesmo parametros que foi utilizado para criar
+    where: {
+      userId,
+      courseId
+    }
+  })
+
+  return like !== null ? true : false
+}}
