@@ -52,6 +52,12 @@ export const userService = {
     return updatedUsers[0]
   },
 
+
+  updatePassword: async (id:number, password:string) => {
+    const [affectedRows, updatedUsers] = await User.update({password}, {where: { id }, returning: true, individualHooks: true}) //individualHooks Roda o hook para criptografar a senha
+    return updatedUsers[0]
+  },
+
   getKeepWatchingList: async (id: number) => {
     const userWithWatchingEpisodes = await User.findByPk(id, {
       include: {

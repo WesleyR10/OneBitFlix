@@ -18,6 +18,8 @@ router.post('/auth/login', authController.login) // login do usuario
 router.get('/users/current', ensureAuth, usersController.show) // Rota que devolve a lista de episodes assistido
 router.put('/users/current', ensureAuth, usersController.update) // Rota que atualiza dados de um usuario
 router.get('/users/current/watching', ensureAuth, usersController.watching) // Rota que devolve dados do usuario
+router.put('/users/current/password', ensureAuth, usersController.updatePassword)
+
 
 
 // ...Categorias
