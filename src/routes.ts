@@ -15,7 +15,9 @@ router.post('/auth/register', authController.register) // Criação e autentica�
 router.post('/auth/login', authController.login) // login do usuario
 
 // Todas as rotas de Usuario
-router.get('/users/current/watching', ensureAuth, usersController.watching)
+router.get('/users/current', ensureAuth, usersController.show) // Rota que devolve a lista de episodes assistido
+router.get('/users/current/watching', ensureAuth, usersController.watching) // Rota que devolve dados do usuario
+
 
 // ...Categorias
 router.get('/categories', ensureAuth, categoriesController.index) //Rota que retorna todas as categorias

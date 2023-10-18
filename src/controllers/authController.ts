@@ -55,7 +55,7 @@ export const authController = {
             }
 
             // Criação do token
-            const token = jwtService.signToken(payload, '1d') // Token expira em 1 dia
+            const token = jwtService.signToken(payload, '7d') // Token expira em 1 dia
 
             return res.json({authenticated: true, ...payload, token})
           }
