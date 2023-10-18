@@ -6,14 +6,18 @@ import { favoritesController } from './controllers/favoritesController'
 import { authController } from './controllers/authController'
 import { ensureAuth, ensureAuthViaQuery } from './middlewares/auth'
 import { likesController } from './controllers/likesController'
+import { usersController } from './controllers/usersController'
 
 const router = express.Router()
 
-// Todas as rotas de User
+// Todas as rotas de Login e Registro
 router.post('/auth/register', authController.register) // Criação e autenticação do usuario
 router.post('/auth/login', authController.login) // login do usuario
 
-// Todas as rotas de categorias
+// Todas as rotas de Usuario
+router.get('/users/current/watching', ensureAuth, usersController.watching)
+
+// ...Categorias
 router.get('/categories', ensureAuth, categoriesController.index) //Rota que retorna todas as categorias
 router.get('/categories/:id', ensureAuth, categoriesController.show) //Rota que retorna categoria especifica
 
