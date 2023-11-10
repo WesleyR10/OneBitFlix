@@ -7,10 +7,10 @@ import { WatchTime } from "../models";
 export const episodeService = {
   streamEpisodeToResponse: (res: Response, videoUrl: string, range: string | undefined) =>{
     const filePath = path.join(__dirname, '../../uploads', videoUrl) // Caminho - A propriedade video url contem na string a pasta videos e o arquivo de video
-    const fileStat = fs.statSync(filePath) // Vai pegar os dados do arquivo e salvar nessa varialvel
+    const fileStat = fs.statSync(filePath) // Vai pegar os dados do arquivo e salvar nessa variável
 
     if(range){ // Se existir pegar parte especifica para carregamento
-      const parts = range.replace(/bytes=/, '').split('-') // Cortando a frase bytes= -- Pegamos o primeiro valor e o segundo valor atraves do -
+      const parts = range.replace(/bytes=/, '').split('-') // Cortando a frase bytes= -- Pegamos o primeiro valor e o segundo valor através do -
 
       const start = parseInt(parts[0], 10)
       const end = parts[1] ? parseInt(parts[1], 10) : fileStat.size - 1

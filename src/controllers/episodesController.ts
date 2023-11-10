@@ -4,9 +4,9 @@ import { WatchTime, WatchTimeAttributes } from '../models/WatchTime';
 import { AuthenticatedRequest } from '../middlewares/auth';
 
 export const episodesController = {
-    //Streaming de leitura- GET - /episodes/stram?videourl=
+    //Streaming de leitura- GET - /episodes/stream?videourl=
     stream: async (req: Request, res: Response) => {
-      const {videoUrl} = req.query // Pegando o parametro 
+      const {videoUrl} = req.query // Pegando o parâmetro 
 
       try {
             if (typeof videoUrl !== 'string') throw new Error('videoUrl param must be of type string'); // Definimos que o videoUrl tinha que ser string no service precisando dessa verificação para se nao for string

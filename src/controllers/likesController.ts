@@ -4,8 +4,8 @@ import { AuthenticatedRequest } from "../middlewares/auth";
 
 export const likesController = {
  // POST /likes
-  save: async (req: AuthenticatedRequest, res: Response) => { // AuthenticatedRequest é o Request do express so que ele extende a instancia de user
-    const userId = req.user!.id // Sendo possivel pegar o user dessa forma, do token decodificado
+  save: async (req: AuthenticatedRequest, res: Response) => { // AuthenticatedRequest é o Request do express so que ele estende a instancia de user
+    const userId = req.user!.id // Sendo possível pegar o user dessa forma, do token decodificado
     const { courseId } = req.body
 
     try {

@@ -8,7 +8,7 @@ export const authController = {
     const { firstName, lastName, phone, birth, email, password } = req.body // Aqui pegamos os dados que serão passados no corpo da requisição
 
     try {
-      const userAlreadyExists  = await userService.finByEmail(email) // Verifica se o usuario existe
+      const userAlreadyExists  = await userService.finByEmail(email) // Verifica se o usuário existe
 
       if(userAlreadyExists){
         throw new Error('Este e-mail já está cadastrado.')
@@ -37,9 +37,9 @@ export const authController = {
         const { email, password } = req.body // Aqui pegamos os dados que serão passados no corpo da requisição para efetuar o login
 
         try {
-          const user = await userService.finByEmail(email) // Tentar obter o usuario pelo seu email
+          const user = await userService.finByEmail(email) // Tentar obter o usuário pelo seu email
 
-          if(!user){ // Se não tiver um usuario
+          if(!user){ // Se não tiver um usuário
             return res.status(404).json({ message: 'E-mail não registrado' })
           }          
 
@@ -49,7 +49,7 @@ export const authController = {
             if(!isSame) return res.status(401).json({message: "Senha incorreta"}) // Retorna a resposta se o erro ocorreu por causa da senha
 
             const payload = {
-              id: user.id, // O user e a verificação por email que foi feita la em cima e retornou todos os dados desse usuario
+              id: user.id, // O user e a verificação por email que foi feita la em cima e retornou todos os dados desse usuário
               firstName: user.firstName,
               email: user.email
             }

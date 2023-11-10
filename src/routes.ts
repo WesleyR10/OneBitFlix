@@ -11,16 +11,14 @@ import { usersController } from './controllers/usersController'
 const router = express.Router()
 
 // Todas as rotas de Login e Registro
-router.post('/auth/register', authController.register) // Criação e autenticação do usuario
-router.post('/auth/login', authController.login) // login do usuario
+router.post('/auth/register', authController.register) // Criação e autenticação do usuário
+router.post('/auth/login', authController.login) // login do usuário
 
-// Todas as rotas de Usuario
+// Todas as rotas de usuário
 router.get('/users/current', ensureAuth, usersController.show) // Rota que devolve a lista de episodes assistido
-router.put('/users/current', ensureAuth, usersController.update) // Rota que atualiza dados de um usuario
-router.get('/users/current/watching', ensureAuth, usersController.watching) // Rota que devolve dados do usuario
+router.put('/users/current', ensureAuth, usersController.update) // Rota que atualiza dados de um usuário
+router.get('/users/current/watching', ensureAuth, usersController.watching) // Rota que devolve dados do usuário
 router.put('/users/current/password', ensureAuth, usersController.updatePassword)
-
-
 
 // ...Categorias
 router.get('/categories', ensureAuth, categoriesController.index) //Rota que retorna todas as categorias
@@ -33,7 +31,7 @@ router.get('/courses/popular', ensureAuth, coursesController.popular) //Rota que
 router.get('/courses/search', ensureAuth, coursesController.search) //Rota que busca um curso
 router.get('/courses/:id', ensureAuth, coursesController.show) //Rota que retorna curso especifico
 
-// Straming
+// Streaming
 router.get('/episodes/stream', ensureAuthViaQuery, episodesController.stream) // Retorna o video
 router.get('/episodes/:id/watchTime', ensureAuth, episodesController.getWatchTime)
 router.post('/episodes/:id/watchTime', ensureAuth, episodesController.setWatchTime)

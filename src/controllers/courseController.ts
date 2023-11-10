@@ -6,7 +6,7 @@ import { likeService } from '../services/likeService'
 import { favoriteService } from '../services/favoriteService'
 
 export const coursesController  = {
-//Metodo que retorna curso em destaque - GET - /courses/featured
+//Método que retorna curso em destaque - GET - /courses/featured
 featured: async (req: Request, res: Response) => {
   try {
     const featuredCourses = await courseService.getRandomFeaturedCourses()
@@ -17,7 +17,7 @@ featured: async (req: Request, res: Response) => {
     }
 }},
 
-//Metodo que retorna cursos em lançamentos - GET - /courses/newest
+//Método que retorna cursos em lançamentos - GET - /courses/newest
 newest: async (req: Request, res: Response) => {
   try {
     const NewestCourses = await courseService.getTopTenNewest()
@@ -28,7 +28,7 @@ newest: async (req: Request, res: Response) => {
     }
 }},
 
-//Metodo que retorna cursos populares - GET - /courses/popular
+//Método que retorna cursos populares - GET - /courses/popular
 popular: async (req: Request, res: Response) => {
   try {
     const topTenCourses = await courseService.getTopTenByLikes()
@@ -39,7 +39,7 @@ popular: async (req: Request, res: Response) => {
     }
 }},
 
-//Metodo que busca cursos- GET - /courses/search?name
+//Método que busca cursos- GET - /courses/search?name
 search: async (req: Request, res: Response) => {
   const {name} = req.query // Feito para pegar o nome passado no corpo da requisição
   const [page, perPage] = getPaginationParams(req.query)
@@ -54,7 +54,7 @@ search: async (req: Request, res: Response) => {
     }
 }},
 
-//Metodo que retorna uma curso especifica - GET - /courses/:id
+//Método que retorna uma curso especifica - GET - /courses/:id
 show: async (req: AuthenticatedRequest, res: Response) => {
   const userId = req.user!.id
   const courseId = req.params.id // Requisição passada no caso o id

@@ -23,7 +23,7 @@ export const likeService = {
 },
 
 isLiked: async (userId: number, courseId: number) => {
-  const like = await Like.findOne({ // E um metodo de busca que verifica se tem like passando os mesmo parametros que foi utilizado para criar
+  const like = await Like.findOne({ // E um método de busca que verifica se tem like passando os mesmo parâmetros que foi utilizado para criar
     where: {
       userId,
       courseId

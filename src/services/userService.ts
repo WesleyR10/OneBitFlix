@@ -29,14 +29,14 @@ function filterLastEpisodesByCourse(episodes: EpisodeInstance[]) {
 export const userService = {
 
   finByEmail: async (email:string) => { 
-    const user = await User.findOne({ // findOne encontrar usuario por email que vem pelos parametros do frontend da funcao de callback acima
+    const user = await User.findOne({ // findOne encontrar usuário por email que vem pelos parâmetros do frontend da função de callback acima
       where: { email } 
     }) 
     
     return user
 },
 
-  create:async (attributes: UserCreationAttributes) => { // Criar o usuario
+  create:async (attributes: UserCreationAttributes) => { // Criar o usuário
     const user = await User.create(attributes)
     return user
   },
@@ -61,7 +61,7 @@ export const userService = {
   getKeepWatchingList: async (id: number) => {
     const userWithWatchingEpisodes = await User.findByPk(id, {
       include: {
-        association: 'Episodes', // Devido a muitos para muitos entre user e episodios
+        association: 'Episodes', // Devido a muitos para muitos entre user e episódios
         attributes: [
           'id',
           'name',

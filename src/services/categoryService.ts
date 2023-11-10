@@ -6,14 +6,13 @@ export const categoryService = {
 
     const {count, rows} = await Category.findAndCountAll({ // Encontrar e contar todos
       attributes: ['id', 'name', 'position'], // Reflete no que vai ser retornado
-      order: [['position', 'ASC']], // E a ordem e o campo position de forma ascedente
+      order: [['position', 'ASC']], // E a ordem e o campo position de forma acedente
       limit: perPage, // Serve para pegarmos uma quantidade especifica de registro
       offset
     })
   
-
     return {
-      categories: rows, // Array com todas as linhas (conteudos)
+      categories: rows, // Array com todas as linhas (conteúdos)
       page, // Pagina que estamos
       perPage, // Quantidade por pagina
       total: count // Quantidade maxima de registro
@@ -23,9 +22,9 @@ export const categoryService = {
   findByIdWithCourses: async (id: string) => {
     const categoryWithCourses = await Category.findByPk(id, {
       attributes: ['id', 'name'],
-      include: { // Include é uma assosiação
-        association: 'courses', // Assosiação definida no index do models
-        attributes: ['id', 'name', 'synopsis', // Atributos que quero da assosiação 
+      include: { // Include é uma associação
+        association: 'courses', // Associação definida no index do models
+        attributes: ['id', 'name', 'synopsis', // Atributos que quero da associação 
         ['thumbnail_url', 'thumbnailUrl']],  // Aqui foi renomeado
         order: [['id', 'ASC']],
         separate: true // Rodar o include em uma query separada para utilizar o order

@@ -13,7 +13,7 @@ export const favoriteService = {
   findByUserId: async (userId: number) => {
     const favorites = await Favorite.findAll({
       attributes: [['user_id', 'userId']], // Do favorito quero apenas o userId
-      where: {userId}, // Pegar somente do usuario passado
+      where: {userId}, // Pegar somente do usuário passado
       include: {
         association: 'Course', // Essa e a funcionalidade extra daquela associação belongsTo Favorite/Course - Retorna os course
         attributes: [
@@ -25,8 +25,8 @@ export const favoriteService = {
       }
   })
   return {
-    userId, // Dessa forma retorna apenas um unico userId
-    courses: favorites.map(favorite => favorite.Course) // Um unico array com todos os cursos
+    userId, // Dessa forma retorna apenas um único userId
+    courses: favorites.map(favorite => favorite.Course) // Um único array com todos os cursos
   }
 }, 
 
@@ -42,7 +42,7 @@ export const favoriteService = {
 },
 
 isFavorited: async (userId: number, courseId: number) => {
-  const favorite = await Favorite.findOne({ // E um metodo de busca que verifica se esta favoritado passando os mesmo parametros que foi utilizado para criar
+  const favorite = await Favorite.findOne({ // E um método de busca que verifica se esta favoritado passando os mesmo parâmetros que foi utilizado para criar
     where: {
       userId,
       courseId

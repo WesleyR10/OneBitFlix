@@ -4,8 +4,8 @@ import { favoriteService } from '../services/favoriteService'
 
 export const favoritesController = {
  // POST /favorites
-  save: async (req: AuthenticatedRequest, res: Response) => { // AuthenticatedRequest é o Request do express so que ele extende a instancia de user
-    const userId = req.user!.id // Sendo possivel pegar o user dessa forma, do token decodificado
+  save: async (req: AuthenticatedRequest, res: Response) => { // AuthenticatedRequest é o Request do express so que ele estende a instancia de user
+    const userId = req.user!.id // Sendo possível pegar o user dessa forma, do token decodificado
     const { courseId } = req.body
 
     try {
@@ -19,8 +19,8 @@ export const favoritesController = {
   },
 
   // GET /favorites
-  index: async (req: AuthenticatedRequest, res: Response) => { // AuthenticatedRequest é o Request do express so que ele extende a instancia de user
-    const userId = req.user!.id // Sendo possivel pegar o user dessa forma, do token decodificado
+  index: async (req: AuthenticatedRequest, res: Response) => { // AuthenticatedRequest é o Request do express so que ele estende a instancia de user
+    const userId = req.user!.id // Sendo possível pegar o user dessa forma, do token decodificado
     
     try {
       const favorites = await favoriteService.findByUserId(userId)

@@ -11,8 +11,8 @@ export const courseService = {
       }
     })
 
-    const randomFeaturedCourses = featuredCourses.sort(() => 0.5 - Math.random()) // Ordenando de forma aleatoria
-    return randomFeaturedCourses.slice(0,3) // Retorna a ordenação aleatoria cortando os elementos pegando a partir da posição zero ate a 3
+    const randomFeaturedCourses = featuredCourses.sort(() => 0.5 - Math.random()) // Ordenando de forma aleatória
+    return randomFeaturedCourses.slice(0,3) // Retorna a ordenação aleatória cortando os elementos pegando a partir da posição zero ate a 3
   },
 
   getTopTenNewest: async () => {
@@ -72,9 +72,9 @@ export const courseService = {
   findByIdWithEpisodes: async (id: string) => {
     const courseWithEpisodes  = await Course.findByPk(id, {
       attributes: ['id', 'name', 'synopsis', ['thumbnail_url', 'thumbnailUrl']],
-      include: { // Include é uma assosiação
-        association: 'episodes', // Assosiação definida no index do models ou automatica de acordo com o nome
-        attributes: ['id', 'name', 'synopsis', 'order', // Atributos que quero da assosiação 
+      include: { // Include é uma associação
+        association: 'episodes', // Associação definida no index do models ou automática de acordo com o nome
+        attributes: ['id', 'name', 'synopsis', 'order', // Atributos que quero da associação 
           ['video_url', 'videoUrl'], // Aqui foi renomeado
           ['seconds_long', 'secondsLong']],  // Aqui foi renomeado
           

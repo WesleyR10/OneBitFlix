@@ -12,7 +12,7 @@ export interface User {
   birth: Date
   email: string
   password: string
-  role: 'admin' | 'user' // Usuario so pode ter esses 2 perfil
+  role: 'admin' | 'user' // Usuário so pode ter esses 2 perfil
 }
 
 export interface UserCreationAttributes
@@ -21,7 +21,7 @@ export interface UserCreationAttributes
 export interface UserInstance
   extends Model<User, UserCreationAttributes>, User {
     Episodes?: EpisodeInstance[]             
-    checkPassword: (password: string, callbackfn: CheckPasswordCallback) => void// Minha instancia utiliza como funcionalidade extra esse metodo criado para check de senha
+    checkPassword: (password: string, callbackfn: CheckPasswordCallback) => void// Minha instancia utiliza como funcionalidade extra esse método criado para check de senha
   }
 
 export const User = sequelize.define<UserInstance, User>('users', {

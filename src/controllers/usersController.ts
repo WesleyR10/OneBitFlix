@@ -43,7 +43,7 @@ export const usersController = {
     const user = req.user!
     const { currentPassword, newPassword } = req.body
   
-    user.checkPassword(currentPassword, async (err, isSame) => { // Verificaçao da senha
+    user.checkPassword(currentPassword, async (err, isSame) => { // Verificação da senha
       try {
         if (err) return res.status(400).json({ message: err.message })
         if (!isSame) return res.status(400).json({ message: 'Senha incorreta' })

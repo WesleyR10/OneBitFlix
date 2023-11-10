@@ -9,7 +9,7 @@ export interface AuthenticatedRequest extends Request {
 }
 
 export function ensureAuth(req: AuthenticatedRequest, res: Response, next: NextFunction){ // NextFunction vai executar e depois chamar a function seguinte
-  const authorizationHeader = req.headers.authorization // Obteve o token do cabecalho da requisição
+  const authorizationHeader = req.headers.authorization // Obteve o token do cabeçalho da requisição
 
   if(!authorizationHeader) return res.status(401).json({message: 'Não autorizado: nenhum token foi encontrado'})
 
@@ -18,7 +18,7 @@ export function ensureAuth(req: AuthenticatedRequest, res: Response, next: NextF
   jwtService.verifyToken(token, (err, decoded) =>{
     if(err || typeof decoded === 'undefined') return res.status(401).json({message: 'Não autorizado: token inválido'})
 
-    userService.finByEmail((decoded as JwtPayload).email).then(user =>{  // Decoded tem o email do usuario (decod = payload)
+    userService.finByEmail((decoded as JwtPayload).email).then(user =>{  // Decoded tem o email do usuário (decod = payload)
       req.user = user
       next()
     })
@@ -35,7 +35,7 @@ export function ensureAuthViaQuery(req: AuthenticatedRequest, res: Response, nex
   jwtService.verifyToken(token, async (err, decoded) =>{
     if(err || typeof decoded === 'undefined') return res.status(401).json({message: 'Não autorizado: token inválido'})
 
-    const user = await userService.finByEmail((decoded as JwtPayload).email)  // Decoded tem o email do usuario (decod = payload)
+    const user = await userService.finByEmail((decoded as JwtPayload).email)  // Decoded tem o email do usuário (decod = payload)
       req.user = user
       next()
     })
