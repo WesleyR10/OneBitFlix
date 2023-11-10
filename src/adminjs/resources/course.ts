@@ -13,7 +13,8 @@ export const courseResourceFeatures: FeatureType[] = [  //Essa featureType vem d
   uploadFileFeature({
     provider: {
       local: {
-        bucket: path.join(__dirname, '../../../public') // Pasta esta publica pois nao e um item necessario de proteção
+        bucket: path.join(__dirname, '../../../public'),  // Pasta esta publica pois nao e um item necessário de proteção
+        opts: {}
       }
     },
     properties: {

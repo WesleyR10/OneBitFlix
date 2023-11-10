@@ -1,20 +1,21 @@
 import { AuthenticationOptions } from '@adminjs/express'
 import { User } from '../models'
 import bcrypt from 'bcrypt'
+import { ADMINJS_COOKIE_PASSWORD } from '../config/environment'
 
-export const authtenticationOptions: AuthenticationOptions =  {
+export const authenticationOptions: AuthenticationOptions =  {
   authenticate: async (email, password) => { 
-    const user = await User.findOne({ where: { email } }) // findOne encontrar usuario por email que vem pelos parametros do frontend da funcao de callback acima 
+    const user = await User.findOne({ where: { email } }) // findOne encontrar usuário por email que vem pelos parâmetros do frontend da função de callback acima 
 
-    if (user && user.role === 'admin') { // Se usuario existir e se a permissão for admin
-      const matched = await bcrypt.compare(password, user.password) // variavel que compara a senha utilizando ela criptografada - Senha do parametro depois senha do banco de dados
+    if (user && user.role === 'admin') { // Se usuário existir e se a permissão for admin
+      const matched = await bcrypt.compare(password, user.password) // variável que compara a senha utilizando ela criptografada - Senha do parâmetro depois senha do banco de dados
 
-      if (matched) { // Se senha sao iguais retorna user e autenticação foi bem sucessidada
+      if (matched) { // Se senha sao iguais retorna user e autenticação foi bem sucedida
         return user
       }
     }
 
     return false
   },
-  cookiePassword: 'senha-do-cookie'
+  cookiePassword: ADMINJS_COOKIE_PASSWORD
 }

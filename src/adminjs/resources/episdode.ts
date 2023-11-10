@@ -14,7 +14,8 @@ export const episodeResourceFeatures: FeatureType[] = [  //Essa featureType vem 
   uploadFileFeature({
     provider: {
       local: {
-        bucket: path.join(__dirname, '../../../uploads') //Caminho absoluto onde adminJs vai salvar o nosso arquivo
+        bucket: path.join(__dirname, '../../../uploads'), //Caminho absoluto onde adminJs vai salvar o nosso arquivo
+        opts: {}
       }
     },
     properties: {
