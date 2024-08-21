@@ -15,7 +15,7 @@
     "@adminjs/sequelize": "^3.0.0",
     "@adminjs/upload": "^3.0.1",
     "adminjs": "^6.8.7",
-    "bcrypt": "~5.0.1",
+    "bcrypt": "~5.1.1",
     "connect-session-sequelize": "^7.1.7",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
