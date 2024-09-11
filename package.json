@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@adminjs/express": "^5.1.0",
+    "@adminjs/express": "^6.0.0",
     "@adminjs/sequelize": "^3.0.0",
     "@adminjs/upload": "^3.0.1",
     "adminjs": "^6.8.7",
